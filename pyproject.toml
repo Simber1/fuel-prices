@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "fuel-prices"
+version = "0.1.0"
+description = ""
+authors = ["Peter Stather <github@stather.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+litestar = "2.4.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
