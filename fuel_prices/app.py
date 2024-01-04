@@ -86,3 +86,4 @@ async def diesel() -> Template:
 
 template_config = TemplateConfig(directory=Path("templates"), engine=JinjaTemplateEngine)
 app = Litestar([index, diesel], template_config=template_config)
+print("Server running!")
