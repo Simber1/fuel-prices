@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Local Fuel Prices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="lg:content-auto py-4 px-6 bg-slate-900 text-slate-100 min-h-screen min-w-screen">
+        <h1 class="text-3xl pb-4">Local Diesel Prices</h1>
+        {% for place in local_stations.items() %}
+            <div class="py-2">
+            <h1 class="text-2xl"> {{ place[0] }} </h1>
+            {% for station in place[1] %}
+                <div class="px-2 text-slate-200">
+                    {{ station['brand'] }} at {{ station['address'] }} currently costs {{ station['prices']['B7'] }}p/L
+                    <br>
+                </div>
+            {% endfor %}
+            </div>
+        {% endfor %}
+        {{ content }}
+        See <a class="text-lime-400	" href="/">Petrol prices</a>
+        {# a comment #}
+    </div>
+</body>
+</html>
