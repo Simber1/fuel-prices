@@ -20,10 +20,10 @@ def get_data() -> dict:
         "sainsburys": "https://api.sainsburys.co.uk/v1/exports/latest/fuel_prices_data.json",
         "sgn": "https://www.sgnretail.uk/files/data/SGN_daily_fuel_prices.json",
         "shell": "https://www.shell.co.uk/fuel-prices-data.html",
-        "tesco": "https://www.tesco.com/fuel_prices/fuel_prices_data.json"
+
 
     }
-
+#"tesco": "https://www.tesco.com/fuel_prices/fuel_prices_data.json"
     parsed_data = {}
     headers = {"user-agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/120.0.0.0 Safari/537.36'}
@@ -41,9 +41,9 @@ async def index() -> Template:
                            {"Galashiels": [{"asda": "galashiels"}, {"shell": "galashiels"}, {"esso": "galashiels"}]},
                            {"Straiton, Edinburgh": [{"asda": "Loanhead"}, {"sainsburys": "straiton"}]},
                            {"Berwick Upon Tweed": [{"asda": "Tweedmouth"}, {"morrisons": "Berwick"},
-                                                   {"tesco": "Berwick-upon-Tweed"}]}
+                                                   ]}
                            ]
-
+#{"tesco": "Berwick-upon-Tweed"}
     local_stations_result = {}
     for location in local_stations_dict:
         for place_name, local_stations in location.items():
