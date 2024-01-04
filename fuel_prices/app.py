@@ -43,7 +43,7 @@ async def index() -> Template:
                            {"Berwick Upon Tweed": [{"asda": "Tweedmouth"}, {"morrisons": "Berwick"},
                                                    ]}
                            ]
-#{"tesco": "Berwick-upon-Tweed"}
+    # {"tesco": "Berwick-upon-Tweed"}
     local_stations_result = {}
     for location in local_stations_dict:
         for place_name, local_stations in location.items():
@@ -67,9 +67,9 @@ async def diesel() -> Template:
                            {"Galashiels": [{"asda": "galashiels"}, {"shell": "galashiels"}, {"esso": "galashiels"}]},
                            {"Straiton, Edinburgh": [{"asda": "Loanhead"}, {"sainsburys": "straiton"}]},
                            {"Berwick Upon Tweed": [{"asda": "Tweedmouth"}, {"morrisons": "Berwick"},
-                                                   {"tesco": "Berwick-upon-Tweed"}]}
+                                                   ]}
                            ]
-
+    # {"tesco": "Berwick-upon-Tweed"}
     local_stations_result = {}
     for location in local_stations_dict:
         for place_name, local_stations in location.items():
