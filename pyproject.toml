@@ -7,8 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-litestar = {version = "2.4.3", extras = ["jinja2"]}
+litestar = "2.4.3"
 uvicorn = { version = "0.24.0.post1", extras = ["standard"] }
+jinja2 = "3.1.2"
 
 
 [build-system]
