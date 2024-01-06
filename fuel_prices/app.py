@@ -23,7 +23,7 @@ def get_data() -> dict:
 
 
     }
-#"tesco": "https://www.tesco.com/fuel_prices/fuel_prices_data.json"
+    # "tesco": "https://www.tesco.com/fuel_prices/fuel_prices_data.json"
     parsed_data = {}
     headers = {"user-agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/120.0.0.0 Safari/537.36'}
