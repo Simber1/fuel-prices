@@ -33,7 +33,7 @@ def get_data() -> dict:
     return parsed_data
 
 
-@get("/")
+@get("/", cache=1800)
 async def index() -> Template:
     parsed_data = get_data()
 
@@ -59,7 +59,7 @@ async def index() -> Template:
     return Template(template_name="index.html.jinja2", context={"local_stations": local_stations_result, "fuel": "petrol"})
 
 
-@get("/diesel")
+@get("/diesel", cache=1800)
 async def diesel() -> Template:
     parsed_data = get_data()
 
@@ -85,6 +85,6 @@ async def diesel() -> Template:
     return Template(template_name="index.html.jinja2", context={"local_stations": local_stations_result, "fuel": "diesel"})
 
 
-template_config = TemplateConfig(directory=Path("templates"), engine=JinjaTemplateEngine)
+template_config = TemplateConfig(directory=Path("templates"), engine=JinjaTemplateEngine, )
 app = Litestar([index, diesel], template_config=template_config)
 print("Server running!")
