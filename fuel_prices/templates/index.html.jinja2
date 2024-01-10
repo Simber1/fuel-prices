@@ -12,34 +12,38 @@
   </style>
 </head>
 <body>
-    <div class="lg:content-auto py-4 px-6 bg-slate-900 text-slate-100 min-h-screen min-w-screen">
-        {% if fuel == "petrol" %}
-        <h1 class="text-3xl pb-4">Local Petrol Prices</h1>
-        {% else %}
-        <h1 class="text-3xl pb-4">Local Diesel Prices</h1>
-        {% endif %}
+    <div class="lg:content-auto px-6 bg-slate-900 text-slate-100 min-h-screen min-w-screen">
 
-        {% for place in local_stations.items() %}
-            <div class="py-2">
-            <h1 class="text-2xl"> {{ place[0] }} </h1>
-            {% for station in place[1] %}
-                <div class="px-2 text-slate-200">
-                    {% if fuel == "petrol" %}
-                    {{ station['brand'] }} at {{ station['address'] }} currently costs {{ station['prices']['E10'] }}p/L
-                    {% else %}
-                    {{ station['brand'] }} at {{ station['address'] }} currently costs {{ station['prices']['B7'] }}p/L
-                    {% endif %}
-                    <br>
+        <div class="py-4">
+            <h1 class="text-3xl pb-4">Local Petrol Prices</h1>
+
+            {% for place in local_stations.items() %}
+                <div class="py-2">
+                <h1 class="text-2xl"> {{ place[0] }} </h1>
+                {% for station in place[1] %}
+                    <div class="px-2 text-slate-200">
+                        {{ station['brand'] }} at {{ station['address'] }} currently costs {{ station['prices']['E10'] }}p/L
+                        <br>
+                    </div>
+                {% endfor %}
                 </div>
             {% endfor %}
-            </div>
-        {% endfor %}
+        </div>
+        <div class="py-4">
+            <h1 class="text-3xl pb-4">Local Diesel Prices</h1>
 
-        {% if fuel == "petrol" %}
-        See <a class="text-lime-400" href="/diesel">Diesel prices</a>
-        {% else %}
-        See <a class="text-lime-400" href="/">Petrol prices</a>
-        {% endif %}
+            {% for place in local_stations.items() %}
+                <div class="py-2">
+                <h1 class="text-2xl"> {{ place[0] }} </h1>
+                {% for station in place[1] %}
+                    <div class="px-2 text-slate-200">
+                        {{ station['brand'] }} at {{ station['address'] }} currently costs {{ station['prices']['B7'] }}p/L
+                        <br>
+                    </div>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>

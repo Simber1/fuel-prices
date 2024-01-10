@@ -56,35 +56,8 @@ async def index() -> Template:
                                 station["prices"][fuel_name] = round(station["prices"][fuel_name] * 100, 1)
                         local_stations_result[place_name].append(station)
 
-    return Template(template_name="index.html.jinja2", context={"local_stations": local_stations_result, "fuel": "petrol"})
+    return Template(template_name="index.html.jinja2", context={"local_stations": local_stations_result})
 
-
-@get("/diesel", cache=1800)
-async def diesel() -> Template:
-    parsed_data = get_data()
-
-    local_stations_dict = [{"Kelso": [{"sainsburys": "pinnaclehill"}]},
-                           {"Galashiels": [{"asda": "galashiels"}, {"shell": "galashiels"}, {"esso": "galashiels"}]},
-                           {"Straiton, Edinburgh": [{"asda": "Loanhead"}, {"sainsburys": "straiton"}]},
-                           {"Berwick Upon Tweed": [{"asda": "Tweedmouth"}, {"morrisons": "Berwick"},
-                                                   ]}
-                           ]
-    # {"tesco": "Berwick-upon-Tweed"}
-    local_stations_result = {}
-    for location in local_stations_dict:
-        for place_name, local_stations in location.items():
-            local_stations_result[place_name] = []
-            for local_station in local_stations:
-                for station in parsed_data[list(local_station.keys())[0]]["stations"]:
-                    if list(local_station.values())[0].lower() in station["address"].lower():
-                        for fuel_name, price in station["prices"].items():
-                            if price < 10:
-                                station["prices"][fuel_name] = round(station["prices"][fuel_name] * 100, 1)
-                        local_stations_result[place_name].append(station)
-
-    return Template(template_name="index.html.jinja2", context={"local_stations": local_stations_result, "fuel": "diesel"})
-
-
-template_config = TemplateConfig(directory=Path("templates"), engine=JinjaTemplateEngine, )
-app = Litestar([index, diesel], template_config=template_config)
+template_config = TemplateConfig(directory=Path("templates"), engine=JinjaTemplateEngine)
+app = Litestar([index], template_config=template_config)
 print("Server running!")
